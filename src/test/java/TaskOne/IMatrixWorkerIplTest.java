@@ -27,4 +27,10 @@ public class IMatrixWorkerIplTest {
         double[][] res={{-1,-5,-4},{0,0,5},{-2,2,7}};
         assertArrayEquals(res,iMatrixWorker.subtract(matrix_one,matrix_two));
     }
+    @Test
+    public void testMulti(){
+        IMatrixWorker iMatrixWorker=new IMatrixWorkerIpl();
+        double[][] res={{37,35,15},{82,89,45},{127,143,75}};
+        assertArrayEquals(res,iMatrixWorker.multiply(matrix_one,matrix_two));
+    }
 }
