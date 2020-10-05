@@ -2,6 +2,8 @@ package TaskThree;
 
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.Assert.*;
 
 public class DateInImaplTest {
@@ -20,9 +22,26 @@ public class DateInImaplTest {
     @Test
     public void getDayOfWeek(){
         DateIn dateIn=new DateInImpl();
-        //assertEquals(1,dateIn.getDayOfWeek(1986,6,23));
-        int res=dateIn.getDayOfWeek(2020,2,29);
-        //assertEquals(4,dateIn.getDayOfWeek(1999,1,14));
-        assertEquals(6,dateIn.getDayOfWeek(2020,2,29));
+        //assertEquals(0,dateIn.getDayOfWeek(1986,6,23));   //DONE
+        //assertEquals(3,dateIn.getDayOfWeek(1999,1,14));   //DONE
+        //assertEquals(5,dateIn.getDayOfWeek(2020,2,29));   //DONE
+        //assertEquals(6,dateIn.getDayOfWeek(2022,8,21));   //DONE
+        //assertEquals(6,dateIn.getDayOfWeek(2141,4,30));   //DONE
+        //assertEquals(2,dateIn.getDayOfWeek(2320,11,3));   //DONE
+    }
+    @Test(expected = NoSuchElementException.class)
+    public void getDayOfWeekException(){
+        DateIn dateIn=new DateInImpl();
+        dateIn.getDayOfWeek(-18,10,22);
+    }
+    @Test
+    public void testToString(){
+        DateIn dateIn=new DateInImpl();
+        assertEquals("Tuesday 25th February 2020",dateIn.toString(2020,2,25));
+    }
+    @Test
+    public void getCountDays(){
+        DateIn dateIn=new DateInImpl();
+        assertEquals(0,dateIn.CountDays(2020,10,2));
     }
 }
