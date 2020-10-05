@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GuessWords {
-    private ArrayList<String> list=new ArrayList<>();
+    private ArrayList<String> list = new ArrayList<>();
     Path path = Paths.get("");
     private String s = path.toAbsolutePath().toString() + "\\src\\main\\resources";
-    private ArrayList<Character> guessWord=new ArrayList<>();
+    private ArrayList<Character> guessWord = new ArrayList<>();
     private File actionsFile;
 
-    void addWordsToList(){
+    void addWordsToList() {
         try {
             File fileReader = new File(s + "\\TextWords");
             Scanner scanner = new Scanner(fileReader);
@@ -29,32 +29,35 @@ public class GuessWords {
             System.out.println("File not found");
         }
     }
-    void startGame(){
+
+    void startGame() {
         addWordsToList();
         //загадываем рандомное слово из списка
         int a = 0;
         int b = list.size();
         int random_index = a + (int) Math.random() * b;
-        String randomWord=list.get(random_index);
+        String randomWord = list.get(random_index);
         char[] randomWordToCharArray = randomWord.toCharArray();
         guessWord = new ArrayList<>(randomWordToCharArray.length);
         for (int i = 0; i < randomWordToCharArray.length; i++) {
             guessWord.add('_');
         }
         actionsFile = new File(s + "\\actions.txt");
-        try (BufferedWriter buff=new BufferedWriter(new FileWriter(actionsFile))){
-
-            //BufferedWriter buff=new BufferedWriter(new FileWriter(actionsFile));
+        try (BufferedWriter buff = new BufferedWriter(new FileWriter(actionsFile, true))) {
             System.out.println("Input your name: ");
-            buff.write(new Scanner(System.in).nextLine()+"\n");
-            boolean flagLose=true;
-            String result="";
-            byte count=1;
-            while (count!=randomWordToCharArray.length+1) {
+            String name=new Scanner(System.in).nextLine();
+            buff.write(name + "\n");
+            boolean flagLose = true;
+            String result = "";
+            byte count = 1;
+            while (count != randomWordToCharArray.length + 1) {
                 System.out.println("Input Character: ");
-               String choice=new Scanner(System.in).nextLine();
-
-                if(choice!="exit") {
+                String choice = new Scanner(System.in).nextLine();
+                if(choice.equals("exit")){
+                    buff.write(name+" exited the game");
+                    break;
+                }
+                else {
                     char[] your_choice = choice.toCharArray();
                     if (your_choice.length > 1) {
                         System.out.println("Error");
@@ -74,35 +77,33 @@ public class GuessWords {
                                 System.out.println("Trial " + count + ": " + result);
                                 buff.write("Trial " + count + ": " + result + "\n");
 
-                                if (result.equals(randomWord)) {
-                                    System.out.println("You win!");
-                                    buff.write("You win!\n");
-                                    //scanner.close();
-                                    break;
-                                }
-                                result = "";
                                 flagLose = false;
                                 break;
                             }
                         }
+                        if (result.equals(randomWord)) {
+                            System.out.println("You win!");
+                            buff.write("You win!\n");
+                            break;
+                        }
+                        result = "";
                         if (flagLose == true) {
                             System.out.println("You lost! :(");
                             buff.write("You lost! :( \n");
-                            //scanner.close();
                             break;
                         }
+                        flagLose = true;
                         count++;
                     }
-                }else
-                    break;
+                }
             }
-        }catch (IOException e){
-            System.out.println("error");
+        } catch (IOException e) {
+            System.out.println("User exited the game");
         }
     }
 
     public static void main(String[] args) {
-        GuessWords guessWords=new GuessWords();
+        GuessWords guessWords = new GuessWords();
         guessWords.startGame();
     }
 }

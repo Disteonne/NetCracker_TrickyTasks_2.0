@@ -1,4 +1,4 @@
-Diaba
+Diana
 Key in one character or your guess word: CTrial 1: C______
 Key in one character or your guess word: rTrial 2: Cr_____
 Key in one character or your guess word: aTrial 3: Cra____
@@ -7,3 +7,13 @@ Key in one character or your guess word: kTrial 5: Crack__
 Key in one character or your guess word: eTrial 6: Cracke_
 Key in one character or your guess word: rTrial 7: Cracker
 You win!
+Bob
+Key in one character or your guess word: CTrial 1: C______
+Key in one character or your guess word: rTrial 2: Cr_____
+Key in one character or your guess word: lYou lost! :( 
+Sara
+Key in one character or your guess word: aTrial 1: __a____
+Jaba
+Key in one character or your guess word: cTrial 1: ___c___
+Bob
+Bob exited the game
