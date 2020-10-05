@@ -47,56 +47,66 @@ public class GuessWords {
             System.out.println("Input your name: ");
             String name=new Scanner(System.in).nextLine();
             buff.write(name + "\n");
+            buff.write("Угадывается слово: "+randomWord+"\n");
             boolean flagLose = true;
             String result = "";
             byte count = 1;
             while (count != randomWordToCharArray.length + 1) {
                 System.out.println("Input Character: ");
                 String choice = new Scanner(System.in).nextLine();
-                if(choice.equals("exit")){
-                    buff.write(name+" exited the game");
+                if (choice.equals("exit")) {
+                    buff.write(name + " exited the game"+"\n");
                     break;
-                }
-                else {
-                    char[] your_choice = choice.toCharArray();
-                    if (your_choice.length > 1) {
-                        System.out.println("Error");
+                } else {
+                    if (choice.equals(randomWord)) {
+                        System.out.println("You win!");
+                        buff.write(name+" win!\n");
+                        buff.write("Кол-во попыток: " + count+"\n");
                         break;
                     } else {
-                        System.out.println("Key in one character or your guess word: " + your_choice[0]);
-                        buff.write("Key in one character or your guess word: " + your_choice[0]);
-                        for (int i = 0; i < randomWordToCharArray.length; i++) {
-                            if (randomWordToCharArray[i] == your_choice[0]) {
-                                guessWord.remove(i);
-                                guessWord.add(i, your_choice[0]);
-                                randomWordToCharArray[i] = '_';
-                                for (Character c : guessWord
-                                ) {
-                                    result += c;
-                                }
-                                System.out.println("Trial " + count + ": " + result);
-                                buff.write("Trial " + count + ": " + result + "\n");
+                        char[] your_choice = choice.toCharArray();
+                        if (your_choice.length > 1) {
+                            System.out.println("Error");
+                            break;
+                        } else {
+                            System.out.println("Key in one character or your guess word: " + your_choice[0]);
+                            //buff.write("Key in one character or your guess word: " + your_choice[0] + "\n");
+                            for (int i = 0; i < randomWordToCharArray.length; i++) {
+                                if (randomWordToCharArray[i] == your_choice[0]) {
+                                    guessWord.remove(i);
+                                    guessWord.add(i, your_choice[0]);
+                                    randomWordToCharArray[i] = '_';
+                                    for (Character c : guessWord
+                                    ) {
+                                        result += c;
+                                    }
+                                    System.out.println("Trial " + count + ": " + result);
+                                    //buff.write("Trial " + count + ": " + result + "\n");
 
-                                flagLose = false;
+                                    flagLose = false;
+                                    break;
+                                }
+                            }
+                            if (result.equals(randomWord)) {
+                                System.out.println("You win!");
+                                buff.write(name+" win!\n");
+                                buff.write("Number of attempts: "+count+"\n");
                                 break;
                             }
+                            result = "";
+                            if (flagLose == true) {
+                                System.out.println("You lost! :(");
+                                buff.write(name+" lost! :( \n");
+                                buff.write("Number of attempts: "+count);
+                                break;
+                            }
+                            flagLose = true;
+                            count++;
                         }
-                        if (result.equals(randomWord)) {
-                            System.out.println("You win!");
-                            buff.write("You win!\n");
-                            break;
-                        }
-                        result = "";
-                        if (flagLose == true) {
-                            System.out.println("You lost! :(");
-                            buff.write("You lost! :( \n");
-                            break;
-                        }
-                        flagLose = true;
-                        count++;
                     }
                 }
             }
+
         } catch (IOException e) {
             System.out.println("User exited the game");
         }

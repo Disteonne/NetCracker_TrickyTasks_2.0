@@ -1,19 +1,25 @@
 Diana
-Key in one character or your guess word: CTrial 1: C______
-Key in one character or your guess word: rTrial 2: Cr_____
-Key in one character or your guess word: aTrial 3: Cra____
-Key in one character or your guess word: cTrial 4: Crac___
-Key in one character or your guess word: kTrial 5: Crack__
-Key in one character or your guess word: eTrial 6: Cracke_
-Key in one character or your guess word: rTrial 7: Cracker
-You win!
+Угадывается слово: Cracker
+Key in one character or your guess word: C
+Key in one character or your guess word: r
+Key in one character or your guess word: a
+Key in one character or your guess word: c
+Key in one character or your guess word: k
+Key in one character or your guess word: e
+Key in one character or your guess word: r
+Diana win!
+Number of attempts: 7
 Bob
-Key in one character or your guess word: CTrial 1: C______
-Key in one character or your guess word: rTrial 2: Cr_____
-Key in one character or your guess word: lYou lost! :( 
-Sara
-Key in one character or your guess word: aTrial 1: __a____
-Jaba
-Key in one character or your guess word: cTrial 1: ___c___
-Bob
-Bob exited the game
+Угадывается слово: Cracker
+Key in one character or your guess word: a
+Key in one character or your guess word: l
+Bob lost! :( 
+Number of attempts: 2Max
+Угадывается слово: Cracker
+Key in one character or your guess word: a
+Key in one character or your guess word: c
+Max exited the game
+Julia
+Угадывается слово: Cracker
+Julia win!
+Кол-во попыток: 3
