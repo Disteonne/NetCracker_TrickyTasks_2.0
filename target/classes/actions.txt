@@ -19,3 +19,7 @@ Number of attempts: 2Max
 Key in one character or your guess word: a
 Key in one character or your guess word: c
 Max exited the game
+Julia
+Угадывается слово: Cracker
+Julia win!
+Кол-во попыток: 3

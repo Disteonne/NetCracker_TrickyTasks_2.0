@@ -8,9 +8,8 @@ import java.util.ArrayList;
 
 public class Tests2 {
     public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter("file.txt"));
-        String name="diana";
-        bufferedWriter.write('k');
-        bufferedWriter.close();
+        int i=1925;
+        int k=i-i%100;
+        System.out.println(k);
     }
 }
