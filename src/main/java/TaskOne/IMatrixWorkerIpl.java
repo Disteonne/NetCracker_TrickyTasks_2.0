@@ -1,5 +1,8 @@
 package TaskOne;
 
+/**
+ * @author Disteonne
+ */
 public class IMatrixWorkerIpl implements IMatrixWorker {
     public IMatrixWorkerIpl() {
         super();
