@@ -42,6 +42,7 @@ public class DateInImaplTest {
     @Test
     public void getCountDays(){
         DateIn dateIn=new DateInImpl();
-        assertEquals(0,dateIn.CountDays(2020,10,2));
+        //long res=dateIn.CountDays(2019,10,8);
+        assertEquals(0,dateIn.CountDays(1999,1,14));
     }
 }

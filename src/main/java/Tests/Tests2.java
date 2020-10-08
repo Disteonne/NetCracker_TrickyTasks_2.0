@@ -9,9 +9,6 @@ import java.util.Date;
 
 public class Tests2 {
     public static void main(String[] args) throws IOException {
-        int i=1925;
-        int k=i-i%100;
-        System.out.println(k);
-        Date date;
+        System.out.println(System.currentTimeMillis()/1000/60/60/24);
     }
 }

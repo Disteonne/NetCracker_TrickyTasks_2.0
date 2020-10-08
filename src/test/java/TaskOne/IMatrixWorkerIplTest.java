@@ -45,4 +45,13 @@ public class IMatrixWorkerIplTest {
         double[][] m_2={{1,2},{3,4,5}};
         double[][] res=iMatrixWorker.multiply(m_1,m_2);
     }
+    @Test
+    public void testDeterminant(){
+        IMatrixWorker iMatrixWorker=new IMatrixWorkerIpl();
+        //double[][] m1={{1,2,3},{4,5,6},{7,8,9}};
+        //double[][] m1={{6,3,0},{4,1,-3},{-2,-3,2}};
+        //double[][] m1={{3,2,1},{1,2,1},{1,2,3}};
+        double[][] m1={{3,6,5,6,4},{5,9,7,8,6},{6,12,13,9,7},{4,6,6,5,4},{2,5,4,5,3}};
+        assertEquals(5,iMatrixWorker.determinant(m1));
+    }
 }

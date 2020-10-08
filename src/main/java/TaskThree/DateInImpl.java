@@ -3,9 +3,6 @@ package TaskThree;
 import java.util.NoSuchElementException;
 
 public class DateInImpl implements DateIn {
-    private String[] month= {"January","February","March","April","May","June","July","August","September",
-    "October","November","December"};
-    private String[] days={ "MON", "TUS", "WED", "THU", "FRI", "SAT","SUN"};
 
     public DateInImpl() {
         super();
@@ -171,14 +168,79 @@ public class DateInImpl implements DateIn {
 
     @Override
     public long CountDays(int year, int month, int day) {
-        long time = System.currentTimeMillis();
-        long seconds = System.currentTimeMillis()/1000;
-        //long second = seconds%60;
-        long minute = seconds/60;
-        long hour =minute/60;
-        long days= (int) hour/24;
+        if (isValidDate(year,month,day)) {
+            long res = 0;
+            long countDayResult = 0;
+            if (year < 1970) {
+                int count_leap = 0;
+                int tmp = year - 1;
+                while (tmp < 1970) {
+                    if (isLeapYear(year)) {
+                        count_leap++;
+                    }
+                    tmp++;
+                }
+                countDayResult = count_leap * 366 + (1970 - year - count_leap) * 365; //кол-во дней(только года)
+                long countDay = 0;
+                int count_tmp = 0;
+                while (count_tmp < month) {
+                    countDay += getDayMonthNotLeap(year, month - count_tmp);
+                    count_tmp++;
+                }
+                countDayResult -= countDay;
+                // long dev = getDayMonthNotLeap(year, month) - day;
+                countDayResult += getDayMonthNotLeap(year, month) - day;
+                res = countDayResult + System.currentTimeMillis() / 1000 / 60 / 60 / 24 + 1;
+            } else {
+                int temp = year - 1970;
+                int count_leap = 0;
+                int tmp = 0;
+                while (tmp < temp) {
+                    if (isLeapYear(year - tmp)) {
+                        count_leap++;
+                    }
+                    tmp++;
+                }
+                countDayResult = count_leap * 366 + (-1970 + year - count_leap) * 365;
+                int countDay = 0;
+                int count_tmp = 0;
+                while (count_tmp < month) {
+                    countDay += getDayMonthNotLeap(year, month - count_tmp);
+                    count_tmp++;
+                }
+                countDayResult += countDay;
+                long dev = getDayMonthNotLeap(year, month) - day;
+                countDayResult -= dev;
+                res = System.currentTimeMillis() / 1000 / 60 / 60 / 24 - countDayResult + 1;
 
+            /*
+            long time = System.currentTimeMillis();
+            long seconds = System.currentTimeMillis() / 1000;
+            //long second = seconds%60;
+            long minute = seconds / 60;
+            long hour = minute / 60;
+            long days = (int) hour / 24;
 
-        return time;
+            return time;
+        }
+
+             */
+            }
+            return res;
+        }
+        else
+            throw new IllegalStateException();
+    }
+
+    public long getDayMonthNotLeap(int year,int month){
+
+        if(month==1||month==3||month==5||month==7||month==8||month==10||month==12){
+            return 31;
+        }
+        else if(month==2){
+            return isLeapYear(year)? 29:28;
+        }
+        else
+            return 30;
     }
 }
