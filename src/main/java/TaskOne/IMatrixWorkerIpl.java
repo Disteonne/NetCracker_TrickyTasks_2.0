@@ -2,6 +2,8 @@ package TaskOne;
 
 /**
  * @author Disteonne
+ * Comment:В случае несоответсвия использования матрицы (пример: умножение матриц разного размера 2х3 и 7х5)
+ * создавался IllegalStateException.
  */
 public class IMatrixWorkerIpl implements IMatrixWorker {
     public IMatrixWorkerIpl() {
